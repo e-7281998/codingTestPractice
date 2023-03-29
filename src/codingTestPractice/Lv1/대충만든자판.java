@@ -19,22 +19,17 @@ public interface 대충만든자판 {
 				}
 			});
 		});
-		
+
 		for (int i = 0; i < targets.length; i++) {
 			String[] tg = targets[i].split("");
-			Stack<Integer> st = new Stack<>();
-			Arrays.stream(tg).forEach(t -> {
-				if (map.containsKey(t))
-					st.push(map.get(t));
-			});
-				for (String a : tg) {
-					if (st.size() == 0) {
-						answer[i] = -1;
-						break;
-					}
-					answer[i] += st.pop();
+			for(String k : tg) {
+				if(!map.containsKey(k)) {
+					answer[i] = -1;
+					break;
 				}
-		    }
+				answer[i] += map.get(k);
+			}
+		}
 	        return answer;
 	}
 
