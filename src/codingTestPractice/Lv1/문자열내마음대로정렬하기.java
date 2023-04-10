@@ -2,6 +2,7 @@ package codingTestPractice.Lv1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,23 +10,22 @@ import java.util.Set;
 
 public class 문자열내마음대로정렬하기 {
 	 public static String[] solution(String[] strings, int n) {
-	        String[] answer = new String[strings.length];
-	         
-	        char[] chararr = new char[strings.length];
-	        Map<Character, Integer> cmap = new HashMap<>();
-	        
-	        for(int i=0; i<strings.length; i++) {
-	        	char ch = strings[i].charAt(n);
-	        	cmap.put(ch, i);
-	        	chararr[i] = ch;
-	        }
-	        Arrays.sort(chararr);
-	        for(int i=0; i<chararr.length; i++) {
-	        	answer[i] = strings[cmap.get(chararr[i])];
-	        }
-	        
-	        System.out.println(Arrays.toString(answer));
-	        
+		 	String[] answer = new String[strings.length];
+		 	HashMap<String, Integer> map = new HashMap<>();
+		 	String arr[] = new String[strings.length];
+		 	
+		 	for(int i=0; i<strings.length; i++) {
+		 		String str = strings[i].charAt(n)+""+strings[i];
+		 		arr[i]= str; 
+		 		map.put(str, i);
+		 	}
+		 	Arrays.asList(arr).sort(null);
+		 	
+		 	for(int i=0; i<strings.length; i++) {
+		 		answer[i] = strings[map.get(arr[i])];
+		 	}
+		 	System.out.println(Arrays.toString(answer));
+		 	 
 	        return answer;
 	    }
 
